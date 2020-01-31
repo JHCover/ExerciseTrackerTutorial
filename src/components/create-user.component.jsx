@@ -21,22 +21,35 @@ export default class CreateUsers extends Component {
     onSubmit(e) {
         e.preventDefault();
 
-        const exercise = {
-            username: this.state.username,
-            description: this.state.description,
-            duration: this.state.duration,
-            date: this.state.date
+        const user = {
+            username: this.state.username
         };
 
-        console.log(exercise);
+        console.log(user);
 
-        window.location = '/';
+        this.setState({
+            username: ''
+        })
     }
 
     render() {
         return (
             <div>
-                <p>You are on the Create Users component!</p>
+                <h3>Create New User</h3>
+                <form onSubmit={this.onSubmit}>
+                    <div className={"form-group"}>
+                        <label>Username</label>
+                        <input
+                            type="text"
+                            required
+                            className="form-control"
+                            value={this.state.username}
+                            onChange={this.onChangeUserName}/>
+                    </div>
+                    <div className="form-group">
+                        <input type="submit" value="Create User" className="btn btn-primary"/>
+                    </div>
+                </form>
             </div>
         )
     }
